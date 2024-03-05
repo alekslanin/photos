@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>wino-web</artifactId>
+	<version>${revision}</version>
+    <packaging>jar</packaging>
+    <name>wino-web</name>
+    <description>Wine and Travel</description>
+	
+	<parent>
+		<groupId>com.lanina</groupId>
+		<artifactId>wino-parent</artifactId>
+		<version>${revision}</version>
+		<relativePath>../wino-parent/pom.xml</relativePath>
+	</parent>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.4.0</version>
+				<executions>
+					<execution>
+						<id>web-install-update</id>
+						<goals>
+							<goal>uptodate-property</goal>
+						</goals>
+						<configuration>
+							<name>web-install-arg</name>
+							<value>-v</value>
+							<else>install</else>
+							<fileSet>
+								<directory>${project.basedir}</directory>
+								<outputDirectory>${project.basedir}/target/classes/static</outputDirectory>
+								<includes>
+									<include>package.json</include>
+								</includes>
+								<mapper>
+									<type>merge</type>
+									<from>*.*</from>
+									<to>index.html</to>
+								</mapper>
+							</fileSet>
+						</configuration>
+					</execution>
+					<execution>
+						<id>web-build-update</id>
+						<goals>
+							<goal>uptodate-property</goal>
+						</goals>
+						<configuration>
+							<name>build.script</name>
+							<value>skip</value>
+							<else>prod</else>
+							<fileSet>
+								<directory>${project.basedir}</directory>
+								<outputDirectory>${project.basedir}/target/classes/static</outputDirectory>
+								<includes>
+									<include>package.json</include>
+								</includes>
+								<mapper>
+									<type>merge</type>
+									<from>*.*</from>
+									<to>index.html</to>
+								</mapper>
+							</fileSet>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>exec-web-install</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>npm</executable>
+							<arguments>
+								<argument>${web-install-arg}</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>exec-npm-build</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>npm</executable>
+							<arguments>
+								<arrument>run</arrument>
+								<argument>build:${build.script}</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.3.1</version>
+				<executions>
+					<execution>
+						<id>copy-resource</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes/static</outputDirectory>
+							<resources>
+								<resource>
+									<directory>build</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

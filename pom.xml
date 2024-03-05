@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.lanina</groupId>
+	<artifactId>wino</artifactId>
+	<version>${revision}</version>
+    <packaging>pom</packaging>
+    <name>wino</name>
+
+    <modules>
+       <module>wino-parent</module>
+       <module>wino-app</module>
+       <module>wino-rest</module>
+       <module>wino-web</module>
+    </modules>
+
+    <properties>
+      <java.version>17</java.version>
+      <revision>0.0.0-SNAPSHOT</revision>
+    </properties>
+
+    <build>
+      <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-install-plugin</artifactId>
+            <version>2.5.2</version>
+            <configuration>
+                <skip>true</skip>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <version>2.8.2</version>
+            <configuration>
+                <skip>true</skip>
+            </configuration>
+        </plugin>
+      </plugins>
+    </build>
+</project>    
