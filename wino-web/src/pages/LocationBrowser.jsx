@@ -92,7 +92,7 @@ export default function LocationBrowser() {
         <button className='nav-button'><img alt='Zoom out' src={zoomOut}/></button>
         <button className='nav-button' onClick={onRotateImageRight}><img alt='Rotate Right' src={rotateRight}/></button>
         <button className='nav-button' onClick={onRotateImageLeft}><img alt='Rotate Left' src={rotateLeft}/></button>
-        <a href="http://www.google.com" target="_blank" rel="noopener">Google it</a>
+        <a href="http://www.google.com" target="_blank" rel="noreferrer">Google it</a>
         <button className={navigationNext} onClick={onNextImage}><img alt = 'Next' src={nextBtn}/></button>
         <button className={navigationPrev} onClick={onPrevImage}><img alt = 'Prev' src={prevBtn}/></button>
         </div>
