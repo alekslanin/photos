@@ -52,10 +52,6 @@ export default function LocationsTable() {
             width: 150    
         },
         { 
-            field: "select", 
-            cellRenderer: CustomButtonComponent 
-        },
-        { 
             field: 'title',
             filter: true,
             floatingFilter: true,
@@ -76,6 +72,9 @@ export default function LocationsTable() {
             width: 150    
         },
         { 
+            field: "button", 
+            cellRenderer: CustomButtonComponent },
+        { 
             field: 'actors',
             filter: true,
             floatingFilter: true,
@@ -83,7 +82,7 @@ export default function LocationsTable() {
             width: 150    
         },
         { 
-            field: "wine", 
+            field: "wineregion", 
             cellRenderer: CustomLinkCellRenderer,
             filter: true,
             floatingFilter: true,

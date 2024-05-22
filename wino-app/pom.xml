@@ -14,6 +14,10 @@
 		<relativePath>../wino-parent/pom.xml</relativePath>
 	</parent>
 
+    <properties>
+        <start-class>com.lanina.wino.WinoApplication</start-class>
+    </properties>
+
     <dependencies>
 		<dependency>
 			<groupId>com.lanina</groupId>
@@ -34,10 +38,10 @@
                 <mainClass>com.lanina.wino.WinoApplication</mainClass>
             </configuration>
             <executions>
-              <execution>
-                <goals>
-                    <goal>build-info</goal>
-                </goals>
+                <execution>
+                    <goals>
+                        <goal>build-info</goal>
+                    </goals>
               </execution>
             </executions>
         </plugin>

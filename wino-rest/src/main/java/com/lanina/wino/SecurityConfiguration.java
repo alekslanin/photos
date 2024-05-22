@@ -18,8 +18,9 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+    // To disable cors
     @Bean public CorsConfigurationSource corsConfigurationSource() {
-        log.info("++++ CorsConfigurationSource +++");
+        log.info("Configuring Cors Configuration Source ......");
         var source = new UrlBasedCorsConfigurationSource();
         var configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("*"));
@@ -31,7 +32,7 @@ public class SecurityConfiguration {
     }
 
     @Bean public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        log.info("++++ SecurityFilterChain +++");
+        log.info("SecurityFilterChain configuration ......");
         return http
                 //.cors(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())

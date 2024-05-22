@@ -8,6 +8,7 @@ import org.springframework.boot.actuate.health.Status;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 @EnableScheduling
 public class HealthMonitor {
+
     private final HealthEndpoint health;
 
     @Scheduled(fixedDelayString = "600000", initialDelayString = "100000")

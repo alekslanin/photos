@@ -4,11 +4,6 @@ export async function fetchLocations(page, size) {
     return winoFetch(url);
 }
 
-export async function fetchLocationsCount() {
-    const url = `http://192.168.1.214:8080/ny/wino/v1/locations/count`;
-    return winoFetch(url);
-}
-
 export async function fetchImage(location, id) {
     const url = `http://192.168.1.214:8080/ny/wino/v1/image?location=${location}&id=${id}`;
     return winoFetch(url);
